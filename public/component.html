@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    import { createElement, render } from './component.js'
+
+    const contstateData = {
+      page : {
+        style: "width: 100vw; height: 100vh; background: #4A4A4A;"
+      },
+      firstBox : {
+        style: "width: 100; height: 50vh; background: yellow;  display:flex; justify-content:center; align-items: center;"
+      },
+      cont : {
+        style: "width: 98vw; height: 48vh; background:  #D9D9D9; display:flex; justify-content:center; align-items: center;"
+      },
+      firstLeftBox : {
+        style: "width: 30vw; height: 30vh; background: blue; display:flex; justify-content:center; align-items: center;"
+      },
+      firstRightBox : {
+        style: "width: 50vw; height: 30vh; background: red;"
+      },
+      pTag : {
+        style: "font-size:1rem; color: black;"
+      }
+    }
+    
+    const page =
+      // root
+      createElement("div", { style: contstateData.page.style },
+        // firstBox
+        createElement("div", { style: contstateData.firstBox.style},
+          // cont
+          createElement("div", { style: contstateData.cont.style},
+            // leftBox
+            createElement("div", { style: contstateData.firstLeftBox.style},
+            // rightBox
+            createElement("div", { style: contstateData.firstRightBox.style},
+              createElement("p", { style: contstateData.pTag.style }, "test")
+            ),
+          ),
+        ),
+      )
+      )
+    // append
+    const root = document.getElementById("root");
+    root.appendChild(render(page));
+
+  </script>
+</body>
+</html>
